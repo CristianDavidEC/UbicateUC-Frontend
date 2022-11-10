@@ -2,41 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:front_ubicate_uc/widgets/widgets.dart';
 
 class CreatePlaceScreen extends StatelessWidget {
-  const CreatePlaceScreen({Key? key}) : super(key: key);
+  CreatePlaceScreen({Key? key}) : super(key: key);
+
+  final List bloques = ["A","B","C","D","E","U"];
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
 
+
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Crear lugar'),
+          title: const Text('Crear sitio'),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Form(
               key: myFormKey,
               child: Column(
                 children: [
                   const CustominputField(
                     labelText: 'Nombre',
-                    hintText: 'Nombre del lugar a crear',
+                    hintText: 'Nombre del sitio a crear',
                     formProperty: 'Name_place',
                   ),
                   const SizedBox(height: 30),
                   const CustominputField(
                       labelText: 'Descripción',
-                      hintText: 'Descripción del lugar a crear',
+                      hintText: 'Descripción del sitio a crear',
                       formProperty: 'description_place'),
                   const SizedBox(height: 30),
                   const CustominputField(
-                      labelText: 'Latitud', formProperty: 'latitude_place'),
+                  labelText: 'Latitud', formProperty: 'latitude_place'),
                   const SizedBox(height: 30),
                   const CustominputField(
-                      labelText: 'Longitud', formProperty: 'longitude_place'),
+                  labelText: 'Longitud', formProperty: 'longitude_place'),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
+                    hint: const Text("Seleccione la disponibilidad"),
                     items: const [
                       DropdownMenuItem(
                         value: 'Disponible',
@@ -51,6 +55,7 @@ class CreatePlaceScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
+                    hint: const Text("Seleccione el tipo"),
                     items: const [
                       DropdownMenuItem(
                         value: 'Salon',
@@ -81,7 +86,7 @@ class CreatePlaceScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
-                    
+                    hint: const Text("Seleccione una sede"),
                     items: const [
                       DropdownMenuItem(
                         value: 'Sede principal',
@@ -110,8 +115,56 @@ class CreatePlaceScreen extends StatelessWidget {
                     ],
                     onChanged: (value) {},
                   ),
+                  const SizedBox(height: 30),
+                  DropdownButtonFormField<String>(
+                    hint: const Text("Seleccione el bloque"),
+                    items: const [
+                      DropdownMenuItem(
+                        value: 'A',
+                        child: Text('Bloque A'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'B',
+                        child: Text('Bloque B'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'C',
+                        child: Text('Bloque C'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'D',
+                        child: Text('Bloque D'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'U',
+                        child: Text('Bloque U'),
+                      ),
+                    ],
+                    onChanged: (value) {},
+                  ),
+                  const SizedBox(height: 30),
+                  DropdownButtonFormField<String>(
+                    hint: const Text("Seleccione el piso"),
+                    items: const [
+                      DropdownMenuItem(
+                        value: 'primero',
+                        child: Text('Primer piso'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'segundo',
+                        child: Text('Segundo piso'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'tercero',
+                        child: Text('Tercer piso'),
+                      ),
+                    ],
+                    onChanged: (value) {},
+                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                     children: [
+                      const Padding(padding: EdgeInsets.symmetric(vertical: 40)),
                       ElevatedButton(
                         child: const SizedBox(
                             width: 140, child: Center(child: Text('Guardar'))),
@@ -122,7 +175,8 @@ class CreatePlaceScreen extends StatelessWidget {
                             width: 140, child: Center(child: Text('Cancelar'))),
                         onPressed: () {},
                       )
-                    ],
+                    ]
+                    
                   ),
                 ],
               ),

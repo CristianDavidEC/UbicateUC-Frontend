@@ -8,13 +8,13 @@ class AppRoutes {
 
   static final menuOption = <MenuOption>[
     MenuOption(
-        route: 'CrearLugar',
-        name: 'crear lugar',
-        screen: const CreatePlaceScreen(),
+        route: 'CrearSitio',
+        name: 'Crear sitio',
+        screen: CreatePlaceScreen(),
         icon: Icons.list_rounded),
     MenuOption(
-        route: 'VerLugar',
-        name: 'ver lugar',
+        route: 'ConsultarSitio',
+        name: 'Consultar sitio',
         screen: const lookPlaceScreen(),
         icon: Icons.list_rounded),
     MenuOption(

@@ -5,10 +5,18 @@ class lookPlaceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Ver lugar'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Consultar sitio'),
       ),
+      body: Center(
+        child: Text('Ventana para consultar sitio'),
+      )
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: setMessage,
+      //   child: const Icon(Icons.add)
+      //   ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
