@@ -1,15 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:front_ubicate_uc/widgets/widgets.dart';
+import '../Services/api.dart' as api;
+import '../models/site.dart';
 
 class CreatePlaceScreen extends StatelessWidget {
   CreatePlaceScreen({Key? key}) : super(key: key);
 
+  final Site site = Site(
+      nombre: '',
+      descripcion: '',
+      tipo: '',
+      estado: '',
+      sede: '',
+      bloque: '',
+      piso: '',
+      latitud: '',
+      longitud: ''
+  );
+
   final List bloques = ["A","B","C","D","E","U"];
+
+  final TextEditingController _controllerName = TextEditingController();
+  final TextEditingController _controllerDescription = TextEditingController();
+  final TextEditingController _controllerType = TextEditingController();
+  final TextEditingController _controllerState = TextEditingController();
+  final TextEditingController _controllerCampus = TextEditingController();
+  final TextEditingController _controllerBlock = TextEditingController();
+  final TextEditingController _controllerFloor = TextEditingController();
+  final TextEditingController _controllerLatitude = TextEditingController();
+  final TextEditingController _controllerLongitude = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
-
 
     return Scaffold(
         appBar: AppBar(
@@ -165,10 +188,10 @@ class CreatePlaceScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                     children: [
                       const Padding(padding: EdgeInsets.symmetric(vertical: 40)),
-                      ElevatedButton(
-                        child: const SizedBox(
+                      const ElevatedButton(
+                        onPressed: api.getHttp,
+                        child: SizedBox (
                             width: 140, child: Center(child: Text('Guardar'))),
-                        onPressed: () {},
                       ),
                       ElevatedButton(
                         child: const SizedBox(
@@ -176,7 +199,6 @@ class CreatePlaceScreen extends StatelessWidget {
                         onPressed: () {},
                       )
                     ]
-                    
                   ),
                 ],
               ),
