@@ -15,12 +15,12 @@ class AppRoutes {
     MenuOption(
         route: 'ConsultarSitio',
         name: 'Consultar sitio',
-        screen: const lookPlaceScreen(),
+        screen: const LookPlaceScreen(),
         icon: Icons.list_rounded),
     MenuOption(
         route: 'VerLugar',
         name: 'ver lugar',
-        screen: const lookPlaceScreen(),
+        screen: const LookPlaceScreen(),
         icon: Icons.list_rounded),
   ];
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {

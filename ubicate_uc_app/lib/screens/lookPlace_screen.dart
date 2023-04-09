@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:front_ubicate_uc/widgets/widgets.dart';
+import 'package:front_ubicate_uc/widgets/site_card.dart';
 
-class lookPlaceScreen extends StatelessWidget {
-  const lookPlaceScreen({Key? key}) : super(key: key);
+class LookPlaceScreen extends StatelessWidget {
+  const LookPlaceScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +19,9 @@ class lookPlaceScreen extends StatelessWidget {
             },
           )
         ],
+      ),
+      body: const Center(
+        child: SiteCard(),
       ),
     );
   }
