@@ -15,10 +15,9 @@ class CreatePlaceScreen extends StatelessWidget {
       bloque: '',
       piso: '',
       latitud: '',
-      longitud: ''
-  );
+      longitud: '');
 
-  final List bloques = ["A","B","C","D","E","U"];
+  final List bloques = ["A", "B", "C", "D", "E", "U"];
 
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerDescription = TextEditingController();
@@ -57,10 +56,10 @@ class CreatePlaceScreen extends StatelessWidget {
                       formProperty: 'description_place'),
                   const SizedBox(height: 30),
                   const CustominputField(
-                  labelText: 'Latitud', formProperty: 'latitude_place'),
+                      labelText: 'Latitud', formProperty: 'latitude_place'),
                   const SizedBox(height: 30),
                   const CustominputField(
-                  labelText: 'Longitud', formProperty: 'longitude_place'),
+                      labelText: 'Longitud', formProperty: 'longitude_place'),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
                     hint: const Text("Seleccione la disponibilidad"),
@@ -185,21 +184,23 @@ class CreatePlaceScreen extends StatelessWidget {
                     onChanged: (value) {},
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, 
-                    children: [
-                      const Padding(padding: EdgeInsets.symmetric(vertical: 40)),
-                      const ElevatedButton(
-                        onPressed: api.getHttp,
-                        child: SizedBox (
-                            width: 140, child: Center(child: Text('Guardar'))),
-                      ),
-                      ElevatedButton(
-                        child: const SizedBox(
-                            width: 140, child: Center(child: Text('Cancelar'))),
-                        onPressed: () {},
-                      )
-                    ]
-                  ),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 40)),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: const SizedBox(
+                              width: 140,
+                              child: Center(child: Text('Guardar'))),
+                        ),
+                        ElevatedButton(
+                          child: const SizedBox(
+                              width: 140,
+                              child: Center(child: Text('Cancelar'))),
+                          onPressed: () {},
+                        )
+                      ]),
                 ],
               ),
             ),

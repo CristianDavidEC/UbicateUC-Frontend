@@ -1,13 +1,13 @@
 class Site {
-  final String nombre;
-  final String descripcion;
-  final String tipo;
-  final String estado;
-  final String sede;
-  final String bloque;
-  final String piso;
-  final String latitud;
-  final String longitud;
+  String nombre;
+  String descripcion;
+  String tipo;
+  String estado;
+  String sede;
+  String bloque;
+  String piso;
+  String latitud;
+  String longitud;
 
   Site(
       {required this.nombre,
@@ -20,5 +20,19 @@ class Site {
       required this.latitud,
       required this.longitud}
   );
+
+  factory Site.fromJson(Map<String, dynamic> json) {
+    return Site(
+      nombre: json['nombre'],
+      descripcion: json['descripcion'],
+      tipo: json['tipo'],
+      estado: json['estado'],
+      sede: json['sede'],
+      bloque: json['bloque'],
+      piso: json['piso'],
+      latitud: json['latitud'],
+      longitud: json['longitud'],
+    );
+  }
  
 }

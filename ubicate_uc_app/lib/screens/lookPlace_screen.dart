@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:front_ubicate_uc/widgets/site_card.dart';
+import '../Services/api.dart' as api;
+class LookPlaceScreen extends StatefulWidget {
+  const LookPlaceScreen({super.key});
 
-class LookPlaceScreen extends StatelessWidget {
-  const LookPlaceScreen({Key? key}) : super(key: key);
+  @override
+  State<LookPlaceScreen> createState() => _LookPlaceScreen();
+
+}
+
+class _LookPlaceScreen extends State<LookPlaceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +27,24 @@ class LookPlaceScreen extends StatelessWidget {
           )
         ],
       ),
-      body: const Center(
-        child: SiteCard(),
+      body: FutureBuilder (
+        future: api.getHttp(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (BuildContext context, int index) {
+                return SiteCard(
+                  site: snapshot.data[index],
+                );
+              },
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }

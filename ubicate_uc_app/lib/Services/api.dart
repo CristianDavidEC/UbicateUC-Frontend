@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
 
+import '../models/site.dart';
+
 final dio = Dio();
 
 getHttp() async {
+  List<Site> sites = [];
   final response = await dio.get('http://127.0.0.1:8000/sitios');
-  return response.data;
+  sites = response.data.map<Site>((json) => Site.fromJson(json)).toList();
+  return sites;
 }
 
 postHttp( data ) async {

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:front_ubicate_uc/models/site.dart';
 
 class SiteCard extends StatelessWidget {
-  const SiteCard({super.key});
+  final Site site;
+  const SiteCard({super.key, required this.site});
+  
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -35,9 +38,9 @@ class SiteCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Nombre del sitio',
-                      style: TextStyle(
+                    Text(
+                      site.nombre,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -45,9 +48,9 @@ class SiteCard extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      'Descripción del sitio esta LookPlaceScreen es una prueba para ver si funciona el widget de la tarjeta de los sitios',
-                      style: TextStyle(
+                    Text(
+                      site.descripcion,
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                       overflow: TextOverflow.ellipsis,
@@ -63,35 +66,35 @@ class SiteCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              children: const [
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
+                              children: [
+                                const Icon(
+                                  Icons.build,
+                                  color: Colors.blueAccent,
                                 ),
-                                Text('Tipo: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                Text('Tipo...' , style: TextStyle(fontSize: 16)),
+                                const Text('Tipo: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                Text(site.tipo , style: const TextStyle(fontSize: 16)),
                               ],
                             ),
 
                             Row(
-                              children: const [
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
+                              children:  [
+                                const Icon(
+                                  Icons.place,
+                                  color: Colors.blueAccent,
                                 ),
-                                Text('Sede: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                Text('Sede...' , style: TextStyle(fontSize: 16)),
+                                const Text('Sede: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                Text(site.sede , style: const TextStyle(fontSize: 16)),
                               ],
                             ),
 
                             Row(
-                              children: const [
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
+                              children: [
+                                const Icon(
+                                  Icons.flourescent_outlined,
+                                  color: Colors.blueAccent,
                                 ),
-                                Text('Bloque: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                Text('Bloque...' , style: TextStyle(fontSize: 16)),
+                                const Text('Bloque: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                Text( site.bloque , style: const TextStyle(fontSize: 16)),
                               ],
                             ),
                           ],
@@ -100,24 +103,24 @@ class SiteCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              children: const [
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
+                              children: [
+                                const Icon(
+                                  Icons.format_line_spacing_rounded,
+                                  color: Colors.blueAccent,
                                 ),
-                                Text('Piso: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                Text('Piso...' , style: TextStyle(fontSize: 16)),
+                                const Text('Piso: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                Text(site.piso , style: const TextStyle(fontSize: 16)),
                               ],
                             ),
 
                             Row(
-                              children: const [
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
+                              children: [
+                                const Icon(
+                                  Icons.circle,
+                                  color: Colors.blueAccent,
                                 ),
-                                Text('Estado: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                Text('Activo' , style: TextStyle(fontSize: 16)),
+                                const Text('Estado: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                Text(site.estado , style: const TextStyle(fontSize: 16)),
                               ],
                             ),
                           ],
