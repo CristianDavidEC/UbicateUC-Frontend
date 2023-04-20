@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front_ubicate_uc/widgets/widgets.dart';
 import '../Services/api.dart' as api;
+import '../Services/api.dart';
 import '../models/site.dart';
 
 class CreatePlaceScreen extends StatelessWidget {
@@ -19,19 +20,25 @@ class CreatePlaceScreen extends StatelessWidget {
 
   final List bloques = ["A", "B", "C", "D", "E", "U"];
 
-  final TextEditingController _controllerName = TextEditingController();
-  final TextEditingController _controllerDescription = TextEditingController();
-  final TextEditingController _controllerType = TextEditingController();
-  final TextEditingController _controllerState = TextEditingController();
-  final TextEditingController _controllerCampus = TextEditingController();
-  final TextEditingController _controllerBlock = TextEditingController();
-  final TextEditingController _controllerFloor = TextEditingController();
-  final TextEditingController _controllerLatitude = TextEditingController();
-  final TextEditingController _controllerLongitude = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+
+    final Map<String, String> formValues = {
+      "nombre": "",
+      "descripcion": "",
+      "latitud": "",
+      "longitud": "",
+      "tipo": "",
+      "sede": "",
+      "estado": "",
+      "bloque": "",
+      "piso": ""
+    };
+
+    final void Function(String, String) onChangedField = (formProperty, value) {
+      formValues[formProperty] = value;
+    };
 
     return Scaffold(
         appBar: AppBar(
@@ -44,22 +51,30 @@ class CreatePlaceScreen extends StatelessWidget {
               key: myFormKey,
               child: Column(
                 children: [
-                  const CustominputField(
+                  CustominputField(
                     labelText: 'Nombre',
                     hintText: 'Nombre del sitio a crear',
-                    formProperty: 'Name_place',
+                    formProperty: 'nombre',
+                    onChanged: onChangedField,
                   ),
                   const SizedBox(height: 30),
-                  const CustominputField(
-                      labelText: 'Descripción',
-                      hintText: 'Descripción del sitio a crear',
-                      formProperty: 'description_place'),
+                  CustominputField(
+                    labelText: 'Descripción',
+                    hintText: 'Descripción del sitio a crear',
+                    formProperty: 'descripcion',
+                    onChanged: onChangedField,
+                  ),
                   const SizedBox(height: 30),
-                  const CustominputField(
-                      labelText: 'Latitud', formProperty: 'latitude_place'),
+                  CustominputField(
+                      labelText: 'Latitud',
+                      formProperty: 'latitud',
+                      onChanged: onChangedField),
                   const SizedBox(height: 30),
-                  const CustominputField(
-                      labelText: 'Longitud', formProperty: 'longitude_place'),
+                  CustominputField(
+                    labelText: 'Longitud',
+                    formProperty: 'longitud',
+                    onChanged: onChangedField,
+                  ),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
                     hint: const Text("Seleccione la disponibilidad"),
@@ -73,7 +88,9 @@ class CreatePlaceScreen extends StatelessWidget {
                         child: Text('inhabilitado'),
                       )
                     ],
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      onChangedField('estado', value!);
+                    },
                   ),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
@@ -104,7 +121,9 @@ class CreatePlaceScreen extends StatelessWidget {
                         child: Text('Oficina'),
                       )
                     ],
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      onChangedField('tipo', value!);
+                    },
                   ),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
@@ -135,7 +154,9 @@ class CreatePlaceScreen extends StatelessWidget {
                         child: Text('Sede Bicentenario'),
                       )
                     ],
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      onChangedField('sede', value!);
+                    },
                   ),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
@@ -162,7 +183,9 @@ class CreatePlaceScreen extends StatelessWidget {
                         child: Text('Bloque U'),
                       ),
                     ],
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      onChangedField('bloque', value!);
+                    },
                   ),
                   const SizedBox(height: 30),
                   DropdownButtonFormField<String>(
@@ -181,7 +204,9 @@ class CreatePlaceScreen extends StatelessWidget {
                         child: Text('Tercer piso'),
                       ),
                     ],
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      onChangedField('piso', value!);
+                    },
                   ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -189,7 +214,10 @@ class CreatePlaceScreen extends StatelessWidget {
                         const Padding(
                             padding: EdgeInsets.symmetric(vertical: 40)),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            print(formValues);
+                            postHttp(formValues);
+                          },
                           child: const SizedBox(
                               width: 140,
                               child: Center(child: Text('Guardar'))),

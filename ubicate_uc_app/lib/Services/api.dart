@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 import '../models/site.dart';
@@ -11,7 +13,9 @@ getHttp() async {
   return sites;
 }
 
-postHttp( data ) async {
-  final response = await dio.post('http://127.0.0.1:8000/sitios', data: data);
+postHttp(data) async {
+  final response =
+      await dio.post('http://127.0.0.1:8000/sitios', data: jsonEncode(data));
+  print(response.data);
   return response.data;
 }
