@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import '../models/site.dart';
 
 final dio = Dio();
