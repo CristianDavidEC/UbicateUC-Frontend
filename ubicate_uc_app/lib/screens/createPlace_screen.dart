@@ -51,6 +51,33 @@ class CreatePlaceScreen extends StatelessWidget {
               key: myFormKey,
               child: Column(
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(100)),
+                          child: Image(
+                            image: AssetImage('lib/assets/CreateSite.jpg'),
+                            width: 200,
+                            height: 200,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'Crear Sitio',
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(0, 59, 112, 100)),
+                        ),
+                      ]),
                   CustominputField(
                     labelText: 'Nombre',
                     hintText: 'Nombre del sitio a crear',
@@ -208,26 +235,40 @@ class CreatePlaceScreen extends StatelessWidget {
                       onChangedField('piso', value!);
                     },
                   ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 40)),
+                            padding: EdgeInsets.symmetric(vertical: 20)),
                         ElevatedButton(
                           onPressed: () {
                             print(formValues);
                             postHttp(formValues);
                           },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 5, 150, 24)),
+                          ),
                           child: const SizedBox(
                               width: 140,
                               child: Center(child: Text('Guardar'))),
                         ),
+                        SizedBox(
+                          height: 30,
+                        ),
                         ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'home');
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 248, 97, 97)),
+                          ),
                           child: const SizedBox(
-                              width: 140,
-                              child: Center(child: Text('Cancelar'))),
-                          onPressed: () {},
-                        )
+                            width: 140,
+                            child: Center(child: Text('Cancelar')),
+                          ),
+                        ),
                       ]),
                 ],
               ),
