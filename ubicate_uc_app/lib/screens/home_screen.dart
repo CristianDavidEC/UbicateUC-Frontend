@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
               height: 200, // Altura de la imagen
               width: 200, // Ancho de la imagen
             ),
-            SizedBox(height: 50), // Espacio entre la imagen y los botones
+            const SizedBox(height: 50), // Espacio entre la imagen y los botones
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
