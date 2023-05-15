@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:front_ubicate_uc/screens/screens.dart';
 import '../models/models.dart';
+import '../screens/confirm_CreatePlace.dart';
 
 class AppRoutes {
   static const initialRoute = 'home';
@@ -16,6 +17,11 @@ class AppRoutes {
         route: 'ConsultarSitio',
         name: 'Consultar sitio',
         screen: const LookPlaceScreen(),
+        icon: Icons.list_rounded),
+    MenuOption(
+        route: 'ExampleScreen',
+        name: 'Confirmar Creacion de sitio',
+        screen: const ExampleScreen(),
         icon: Icons.list_rounded),
     MenuOption(
         route: 'VerLugar',
@@ -37,5 +43,4 @@ class AppRoutes {
       builder: (context) => const AlertScreen(),
     );
   }
-
 }

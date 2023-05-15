@@ -242,6 +242,7 @@ class CreatePlaceScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(vertical: 20)),
                         ElevatedButton(
                           onPressed: () {
+                            Navigator.pushNamed(context, 'ExampleScreen');
                             print(formValues);
                             postHttp(formValues);
                           },
